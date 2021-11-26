@@ -2,7 +2,7 @@ version: 0.2
 env:
   shell: bash
   variables:
-    AWS_LAMBDA_NAME: CodeBuild:AWS_LAMBDA_NAME
+    AWS_LAMBDA_NAME: "EmailSpamClassifier-SpamCheckLambda-V1bVUwfDXw82"
 phases:
   install:
     runtime-versions:
