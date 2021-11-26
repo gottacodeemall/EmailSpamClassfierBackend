@@ -45,9 +45,10 @@ def handler(event, context):
     score = score*100
 
 
-    message = "We received your email sent to " + str(email_obj.get('To')) + " with subject " + str(email_obj.get('Subject')) + ".\nHere \
-is a 240 character sample of the email body:\n\n" + body[:240] + "\nThe email was \
-categorized as " + str(label) + " with a " + str(score) + "% confidence."
+    message = """
+    We received your email sent to '" + str(email_obj.get('To')) + "' with subject '" + str(email_obj.get('Subject')) + "'.\n
+    Here is a 240 character sample of the email body:\n\n""" + body[:240] + """\n
+    The email was categorized as """ + str(label) + """ with a """ + str(score) + """% confidence."""
 
     email_client = session.client('ses')
     response_email = email_client.send_email(
@@ -61,12 +62,12 @@ categorized as " + str(label) + " with a " + str(score) + "% confidence."
             },
             'Subject': {
                 'Charset': 'UTF-8',
-                'Data': 'Spam analysis of your email',
+                'Data': 'Email Spam Analysis',
             },
         },
         Source=str(email_obj.get('To')),
     )
-    print(response_email)
+    print("Response email", response_email)
   except Exception as ex:
        print("Exception: ", ex)
   return {}

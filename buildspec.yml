@@ -4,13 +4,20 @@ phases:
   install:
     runtime-versions:
       python: 3.8
+  pre_build:
+    commands:
+      - sudo apt install zip unzip
+      - pip install awscli
   build:
     commands:
       - echo "[+] Installing dependencies...."
       - pip install -r requirements.txt --target .
+      - zip -r target-lambda.zip .
   post_build:
     commands:
       - echo Build completed
+      - aws lambda update-function-code --function-name "EmailSpamClassifier-SpamCheckLambda-V1bVUwfDXw82" --zip-file fileb://./target-lambda.zip
+      - aws lambda publish-version --function-name "EmailSpamClassifier-SpamCheckLambda-V1bVUwfDXw82"
 artifacts:
   files:
     - '**/*'
