@@ -1,6 +1,8 @@
 version: 0.2
 env:
   shell: bash
+  variables:
+    AWS_LAMBDA_NAME: CodeBuild:AWS_LAMBDA_NAME
 phases:
   install:
     runtime-versions:
