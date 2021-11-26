@@ -7,8 +7,8 @@ phases:
       python: 3.8
   pre_build:
     commands:
-      - sudo apt-get update
-      - sudo apt-get install zip
+      - apt-get update
+      - apt-get install zip
       - pip install awscli
   build:
     commands:
