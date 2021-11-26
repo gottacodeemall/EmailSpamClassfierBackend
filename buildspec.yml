@@ -20,8 +20,8 @@ phases:
   post_build:
     commands:
       - echo Build completed
-      - aws lambda update-function-code --function-name "$AWS_LAMBDA_NAME" --zip-file fileb://./target-lambda.zip
-      - aws lambda publish-version --function-name "$AWS_LAMBDA_NAME"
+      - aws lambda update-function-code --function-name $AWS_LAMBDA_NAME --zip-file fileb://./target-lambda.zip
+      - aws lambda publish-version --function-name $AWS_LAMBDA_NAME
 artifacts:
   files:
     - '**/*'
