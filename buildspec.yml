@@ -20,7 +20,7 @@ phases:
   post_build:
     commands:
       - echo Build completed
-      - aws lambda update-function-code --function-name "EmailSpamClassifier-SpamCheckLambda-V1bVUwfDXw82" --zip-file fileb://./target-lambda.zip
+      - aws lambda update-function-code --function-name "EmailSpamClassifier-SpamCheckLambda-V1bVUwfDXw82" --zip-file fileb://target-lambda.zip
       - aws lambda publish-version --function-name "EmailSpamClassifier-SpamCheckLambda-V1bVUwfDXw82"
 artifacts:
   files:
