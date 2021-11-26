@@ -6,10 +6,8 @@ phases:
       python: 3.8
   build:
     commands:
-      - echo pwd
-      - cd src/
       - echo "[+] Installing dependencies...."
-      - pip install -r requirements.txt
+      - pip install -r requirements.txt --target .
   post_build:
     commands:
       - echo Build completed
