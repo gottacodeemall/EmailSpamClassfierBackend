@@ -13,7 +13,7 @@ def handler(event, context):
     s3_session = session.client('s3')
     response = s3_session.get_object(Bucket=bucket, Key=key)
 
-    endpoint_name = 'sms-spam-classifier-mxnet-2021-11-26-00-30-18-850'
+    endpoint_name = 'EmailSpamClassifierCCBD'
     runtime = session.client('runtime.sagemaker')
     vocabulary_length = 9013
     email_obj = email.message_from_bytes(response['Body'].read())
@@ -46,7 +46,7 @@ def handler(event, context):
 
 
     message = """
-    We received your email sent to '" + str(email_obj.get('To')) + "' with subject '" + str(email_obj.get('Subject')) + "'.\n
+    We received your email sent to '""" + str(email_obj.get('To')) + "' with subject '" + str(email_obj.get('Subject')) + """'.\n
     Here is a 240 character sample of the email body:\n\n""" + body[:240] + """\n
     The email was categorized as """ + str(label) + """ with a """ + str(score) + """% confidence."""
 
